@@ -12,5 +12,4 @@ defalut_args = {
 }
 with DAG("Execution_Dag",default_args=defalut_args, schedule_interval='* 6 * * *', template_searchpath=['/mnt/airflow/dags'],catchup=False) as dag:
     t1 = PostgresOperator(task_id="create_new_table",postgres_conn_id='postgres_conn',sql="create_new_table.sql")
-    # t2 = PostgresOperator(task_id="validate_entry", postgres_conn_id="postgres_conn",sql="create Table log_table as select * from dag_run;")
     t1
