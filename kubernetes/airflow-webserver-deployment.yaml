@@ -38,14 +38,19 @@ spec:
             mountPath: /usr/local/airflow/dags
           - name: logs-persistent-storage
             mountPath: /usr/local/airflow/logs
+
       volumes:
         - name: requirements-configmap
           configMap:
             name: requirements-configmap
         - name: dags-host-volume
           hostPath:
-            path: /mnt
+            path: /mnt/airflow/dags
             type: Directory
         - name: logs-persistent-storage
           persistentVolumeClaim:
               claimName: airflow-logs-pvc
+
+
+
+
